@@ -1,0 +1,1 @@
+this is a basic mesa model, I don't really know what I'm doing yet but I'm following tutorials on https://mesa.readthedocs.io/en/master/tutorials/intro_tutorial.html
