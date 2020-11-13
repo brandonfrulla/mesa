@@ -9,8 +9,12 @@ class MoneyAgent(Agent):
 
     # basic output for each agents' respective step
     def step(self):
-        print("Hi, I am agent " + str(self.unique_id) + ", and I currently have " 
-        + str(self.wealth) + " wealth unit(s).")
+        if self.wealth == 0:
+            return
+        other_agent = self.random.choice(self.model.schedule.agents)
+        other_agent.wealth += 1
+        print("Agent " + str(self.unique_id) + " has " + str(self.wealth) + " wealth unit(s). Giving agent " + str(other_agent.unique_id) + " one.")
+        self.wealth -=1
 
 class MoneyModel(Model):
     # a model with N number of agents
@@ -23,3 +27,20 @@ class MoneyModel(Model):
 
     def step(self):
         self.schedule.step()
+
+        
+
+# class __main__:
+# all_wealth = []
+#     #This runs the model 100 times, each model executing 10 steps.
+#     for j in range(100):
+#         # Run the model
+#         model = MoneyModel(10)
+#         for i in range(10):
+#             model.step()
+
+#     # Store the results
+#     for agent in model.schedule.agents:
+#         all_wealth.append(agent.wealth)
+
+# plt.hist(all_wealth, bins=range(max(all_wealth)+1)
