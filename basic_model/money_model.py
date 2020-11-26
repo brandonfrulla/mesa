@@ -44,6 +44,8 @@ class MoneyModel(Model):
         self.num_agents = N
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
+        self.running=True
+
         # Create agents
         for i in range(self.num_agents):
             a = MoneyAgent(i, self)
@@ -57,7 +59,6 @@ class MoneyModel(Model):
             model_reporters={"Gini": compute_gini},
             agent_reporters={"Wealth": "wealth"}
         )
-        
 
     def step(self):
         self.datacollector.collect(self)
